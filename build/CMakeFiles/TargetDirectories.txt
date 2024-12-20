@@ -1,0 +1,3 @@
+/home/sanchit/Documents/project/Game/build/CMakeFiles/cpp.dir
+/home/sanchit/Documents/project/Game/build/CMakeFiles/edit_cache.dir
+/home/sanchit/Documents/project/Game/build/CMakeFiles/rebuild_cache.dir
