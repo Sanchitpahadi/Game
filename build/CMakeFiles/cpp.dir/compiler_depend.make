@@ -583,6 +583,7 @@ CMakeFiles/cpp.dir/main.cpp.o: /home/sanchit/Documents/project/Game/main.cpp \
   /home/sanchit/Documents/project/Game/VertexBuffer.h \
   /home/sanchit/Documents/project/Game/VertexBufferLayout.h \
   /home/sanchit/Documents/project/Game/h.h \
+  /home/sanchit/Documents/project/Game/main.h \
   /home/sanchit/Documents/project/Game/shader.h \
   /home/sanchit/Documents/project/Game/std_img.h \
   /usr/include/GLFW/glfw3.h \
@@ -1269,6 +1270,8 @@ CMakeFiles/cpp.dir/main.cpp.o: /home/sanchit/Documents/project/Game/main.cpp \
 
 /usr/include/glm/detail/type_mat3x3.hpp:
 
+/usr/include/glm/detail/type_mat3x2.inl:
+
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/glm/detail/type_mat2x2.inl:
@@ -1625,8 +1628,6 @@ CMakeFiles/cpp.dir/main.cpp.o: /home/sanchit/Documents/project/Game/main.cpp \
 
 /usr/include/ctype.h:
 
-/usr/include/glm/detail/type_mat3x2.inl:
-
 /usr/include/c++/13/bits/allocator.h:
 
 /usr/include/c++/13/bits/stl_bvector.h:
@@ -1879,6 +1880,14 @@ CMakeFiles/cpp.dir/main.cpp.o: /home/sanchit/Documents/project/Game/main.cpp \
 
 /usr/include/c++/13/bits/codecvt.h:
 
+/home/sanchit/Documents/project/Game/main.h:
+
+/usr/include/glm/ext/vector_float1_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/c++/13/sstream:
+
 /usr/include/glm/ext/matrix_double2x3_precision.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
@@ -1916,12 +1925,6 @@ CMakeFiles/cpp.dir/main.cpp.o: /home/sanchit/Documents/project/Game/main.cpp \
 /usr/include/c++/13/limits:
 
 /usr/include/c++/13/pstl/glue_algorithm_defs.h:
-
-/usr/include/glm/ext/vector_float1_precision.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/include/c++/13/sstream:
 
 /usr/include/limits.h:
 

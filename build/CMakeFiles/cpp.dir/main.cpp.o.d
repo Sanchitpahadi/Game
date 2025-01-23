@@ -1,5 +1,6 @@
 CMakeFiles/cpp.dir/main.cpp.o: \
  /home/sanchit/Documents/project/Game/main.cpp /usr/include/stdc-predef.h \
+ /home/sanchit/Documents/project/Game/main.h \
  /home/sanchit/Documents/project/Game/Glad/glad.h \
  /home/sanchit/Documents/project/Game/Glad/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \

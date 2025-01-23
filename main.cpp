@@ -1,57 +1,8 @@
-#include "Glad/glad.h"  // First, include Glad
-#include <GLFW/glfw3.h>  // Then include GLFW (if you're using it)
-#define STBI_MALLOC(sz) malloc(sz)
-#define STBI_FREE(p) free(p)
-#define STBI_REALLOC(p, sz) realloc(p, sz)
-#define STBI_NO_FAILURE_STRINGS
-#define STBI_NO_SIMD 
-#define STB_IMAGE_IMPLEMENTATION
-#include "std_img.h"
+#include"main.h"
 
-#include <glm.hpp> 
-#include <gtc/matrix_transform.hpp> 
-#include <gtc/type_ptr.hpp> 
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include "VertexBuffer.h"
-#include "Texture.h"
-#include "Bullet.h"
-#include "VertexArray.h"
-#include "VertexBufferLayout.h"
-#include "shader.h"
 
-const float collisionThreshold = 0.1f; // Adjust the value based on your game's requirements
 
-class Enemy {
-public:
-    glm::vec3 position;
-    float fireCooldown;
-    bool markForDeletion = false;
-
-    // Add const qualifier to getPosition
-    glm::vec3 getPosition() const { return position; }
-
-    void update() {
-        position.y -= 0.00088f;
-    }
-};
-
-bool enemyCollisionLogic(Enemy& enemy, std::vector<Bullet>& bullets) {
-    for (auto& bullet : bullets) {
-        float distance = glm::length(enemy.getPosition() - bullet.getPosition());
-        if (distance < collisionThreshold) {
-            bullet.markForDeletion = true;  // Mark the bullet for deletion
-            enemy.markForDeletion = true;  // Mark the enemy for deletion
-            return true; // Stop checking other bullets for this enemy
-        }
-    }
-    return false;
-}
 
 glm::vec3 trianglePosition(0.0f, -0.6f, 0.0f);
 std::vector<Bullet> bullets;
@@ -65,14 +16,7 @@ int enemyKillCount = 0; // Counter for killed enemies
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void movement(GLFWwindow* window);
 
-std::string readShaderFromFile(const std::string& shaderPath) {
-    std::ifstream shaderFile;
-    std::stringstream shaderStream;
-    shaderFile.open(shaderPath);
-    shaderStream << shaderFile.rdbuf();
-    shaderFile.close();
-    return shaderStream.str();
-}
+
 
 int main() {
     // Initialize and configure GLFW
@@ -211,12 +155,11 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         int modelLoc = glGetUniformLocation(shaderProgram, "model");
-
+        wsA.Bind();
         glm::mat4 model = glm::mat4(1.0f); // Identity matrix (no translation)
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
         texforstart.Bind(1);
         glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 1);
-        wsA.Bind();
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         if (glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS)
@@ -245,23 +188,8 @@ int main() {
         texwhileplay1.Bind(1);
         glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 1);
         wsA.Bind();
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        //// Second Rectangle
-        //texwhileplay2.Bind(1);
-        //glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 1);
-        //wsA.Bind();
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        //// Third Rectangle
-        //texwhileplay3.Bind(1);
-        //glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 1);
-        //wsA.Bind();
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-         // Render player
-       
-         model = glm::translate(model, trianglePosition);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);  
+        model = glm::translate(model, trianglePosition);
        
          glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
          tex.Bind(0);
@@ -394,16 +322,16 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 void movement(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        trianglePosition.x -= 0.006f;
+        trianglePosition.x -= 0.007f;
     }
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        trianglePosition.x += 0.006f;
+        trianglePosition.x += 0.007f;
     }
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        trianglePosition.y += 0.006f;
+        trianglePosition.y += 0.007f;
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        trianglePosition.y -= 0.006f;
+        trianglePosition.y -= 0.007f;
     }
     if (trianglePosition.x < -0.9f) trianglePosition.x = 0.9f;
     if (trianglePosition.x > 0.9f) trianglePosition.x = -0.9f;

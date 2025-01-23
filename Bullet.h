@@ -5,7 +5,7 @@
 
 class Bullet {
     glm::vec3 position;
-    float speed = 0.001f;
+    float speed = 0.1f;
 public:
     bool markForDeletion = false;
 
